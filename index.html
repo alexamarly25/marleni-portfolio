@@ -1,681 +1,725 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Marleni Henriquez — Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Marleni Henriquez — Desarrolladora de Sistemas</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --bg: #F5F2EA;
-      --ink: #1C2B1E;
-      --muted: #6B7D6E;
-      --accent: #2D5A3D;
-      --accent2: #4A8C5C;
-      --line: #D4CFC2;
-      --card: #EAE6DA;
-    }
+  :root {
+    --navy:   #0D1B3E;
+    --blue:   #1A3A6B;
+    --accent: #2D7DD2;
+    --cyan:   #4FC3F7;
+    --light:  #F0F4FF;
+    --white:  #FFFFFF;
+    --gray:   #64748b;
+    --text:   #1e293b;
+  }
 
-    html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; }
 
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: 'DM Mono', monospace;
-      font-weight: 300;
-      line-height: 1.6;
-      min-height: 100vh;
-    }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
 
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.4rem 4rem;
-      background: var(--bg);
-      border-bottom: 1px solid var(--line);
-    }
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(13, 27, 62, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 18px;
+    color: var(--white); letter-spacing: 1px;
+  }
+  .nav-logo span { color: var(--cyan); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.7);
+    text-decoration: none; letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--cyan); }
 
-    .nav-logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.02em;
-      color: var(--ink);
-    }
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, #1a4a8a 100%);
+    display: flex; align-items: center;
+    padding: 120px 48px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(79,195,247,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -100px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(45,125,210,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-content {
+    max-width: 1100px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 380px; gap: 80px;
+    align-items: center; position: relative; z-index: 1;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(79,195,247,0.15); border: 1px solid rgba(79,195,247,0.3);
+    color: var(--cyan); font-size: 12px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 20px; margin-bottom: 24px;
+  }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--cyan); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 800; color: var(--white);
+    line-height: 1.05; margin-bottom: 16px;
+  }
+  .hero-name span { color: var(--cyan); }
+  .hero-title {
+    font-size: 18px; font-weight: 400; color: rgba(255,255,255,0.65);
+    margin-bottom: 28px; line-height: 1.5;
+  }
+  .hero-desc {
+    font-size: 15px; color: rgba(255,255,255,0.55);
+    line-height: 1.8; max-width: 520px; margin-bottom: 40px;
+  }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: white;
+    padding: 13px 28px; border-radius: 10px;
+    font-size: 14px; font-weight: 600;
+    text-decoration: none; transition: all 0.2s;
+    border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: #1a6ab8; transform: translateY(-1px); }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1.5px solid rgba(255,255,255,0.3); color: white;
+    padding: 13px 28px; border-radius: 10px;
+    font-size: 14px; font-weight: 500;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
 
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
+  /* Foto */
+  .hero-photo {
+    position: relative; display: flex; justify-content: center;
+  }
+  .photo-ring {
+    width: 300px; height: 300px; border-radius: 50%;
+    border: 3px solid rgba(79,195,247,0.4);
+    padding: 6px; position: relative;
+  }
+  .photo-ring::before {
+    content: ''; position: absolute; inset: -12px;
+    border-radius: 50%;
+    border: 1px dashed rgba(79,195,247,0.2);
+    animation: spin 20s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .photo-ring img {
+    width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
+    background: linear-gradient(135deg, #1A3A6B, #2D7DD2);
+  }
+  .photo-initials {
+    width: 100%; height: 100%; border-radius: 50%;
+    background: linear-gradient(135deg, #1A3A6B, #2D7DD2);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif; font-size: 72px; font-weight: 800;
+    color: rgba(255,255,255,0.9);
+  }
 
-    .nav-links a {
-      text-decoration: none;
-      color: var(--muted);
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
+  /* Contacto hero */
+  .hero-contact {
+    display: flex; gap: 20px; flex-wrap: wrap; margin-top: 32px;
+  }
+  .contact-chip {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; color: rgba(255,255,255,0.6);
+  }
+  .contact-chip span { font-size: 15px; }
 
-    .nav-links a:hover { color: var(--accent); }
+  /* ── SECCIONES GENERALES ── */
+  section { padding: 80px 48px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 800; color: var(--navy);
+    margin-bottom: 48px; line-height: 1.15;
+  }
 
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      padding-top: 80px;
-    }
+  /* ── SOBRE MÍ ── */
+  .about { background: var(--light); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+  }
+  .about-text p {
+    font-size: 15px; line-height: 1.85; color: #475569; margin-bottom: 16px;
+  }
+  .about-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  }
+  .stat-card {
+    background: white; border-radius: 16px; padding: 24px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .stat-number {
+    font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800;
+    color: var(--navy); line-height: 1;
+  }
+  .stat-number span { color: var(--accent); }
+  .stat-label { font-size: 13px; color: var(--gray); margin-top: 6px; font-weight: 500; }
 
-    .hero-left {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 6rem 4rem;
-      border-right: 1px solid var(--line);
-    }
+  /* ── HABILIDADES ── */
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+  }
+  .skill-group {
+    background: white; border-radius: 16px; padding: 28px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .skill-group-title {
+    font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700;
+    color: var(--navy); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .skill-group-title span { font-size: 20px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tag {
+    padding: 5px 12px; border-radius: 8px;
+    font-size: 12px; font-weight: 600;
+    background: var(--light); color: var(--accent);
+    border: 1px solid #dbeafe;
+  }
 
-    .hero-tag {
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent2);
-      margin-bottom: 2rem;
-    }
+  /* ── EXPERIENCIA ── */
+  .experience { background: var(--light); }
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .timeline-item {
+    display: grid; grid-template-columns: 180px 1fr;
+    gap: 40px; position: relative; padding-bottom: 48px;
+  }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-item::before {
+    content: ''; position: absolute;
+    left: 190px; top: 8px; bottom: 0;
+    width: 1px; background: #e2e8f0;
+  }
+  .timeline-item:last-child::before { display: none; }
+  .timeline-date {
+    font-size: 12px; font-weight: 600; color: var(--gray);
+    text-align: right; padding-top: 4px; line-height: 1.5;
+  }
+  .timeline-dot {
+    position: absolute; left: 183px; top: 6px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--accent); border: 3px solid white;
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  .timeline-body { padding-left: 24px; }
+  .timeline-role {
+    font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700;
+    color: var(--navy); margin-bottom: 4px;
+  }
+  .timeline-company {
+    font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 12px;
+  }
+  .timeline-bullets { display: flex; flex-direction: column; gap: 6px; }
+  .timeline-bullets li {
+    font-size: 13px; color: #475569; line-height: 1.6;
+    list-style: none; padding-left: 16px; position: relative;
+  }
+  .timeline-bullets li::before {
+    content: ''; position: absolute; left: 0; top: 8px;
+    width: 5px; height: 5px; border-radius: 50%; background: var(--accent);
+  }
 
-    .hero-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.8rem, 5vw, 4.5rem);
-      line-height: 1.05;
-    }
+  /* ── PROYECTOS ── */
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;
+  }
+  .project-card {
+    background: white; border-radius: 20px; overflow: hidden;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+  .project-header {
+    padding: 28px 28px 20px;
+    background: linear-gradient(135deg, var(--navy), var(--blue));
+    position: relative; overflow: hidden;
+  }
+  .project-header::after {
+    content: ''; position: absolute; top: -40px; right: -40px;
+    width: 120px; height: 120px;
+    background: rgba(79,195,247,0.1); border-radius: 50%;
+  }
+  .project-icon { font-size: 32px; margin-bottom: 12px; }
+  .project-name {
+    font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700;
+    color: white; margin-bottom: 6px;
+  }
+  .project-subtitle { font-size: 12px; color: rgba(255,255,255,0.6); }
+  .project-body { padding: 20px 28px 24px; }
+  .project-desc { font-size: 13px; color: #475569; line-height: 1.7; margin-bottom: 16px; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+  .stack-tag {
+    padding: 3px 10px; border-radius: 6px;
+    font-size: 11px; font-weight: 600;
+    background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;
+  }
+  .project-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 600; color: var(--accent);
+    text-decoration: none;
+  }
+  .project-link:hover { color: var(--navy); }
 
-    .hero-name em {
-      font-style: italic;
-      color: var(--accent);
-    }
+  /* ── CERTIFICACIONES ── */
+  .certs { background: var(--light); }
+  .certs-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px;
+  }
+  .cert-card {
+    background: white; border-radius: 12px; padding: 16px 18px;
+    border: 1px solid #e2e8f0; display: flex; align-items: center; gap: 12px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+  }
+  .cert-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--navy), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+  .cert-name { font-size: 12px; font-weight: 600; color: var(--navy); line-height: 1.4; }
+  .cert-year { font-size: 11px; color: var(--gray); margin-top: 2px; }
 
-    .hero-bio {
-      margin-top: 2rem;
-      color: var(--muted);
-      font-size: 0.82rem;
-      max-width: 38ch;
-      line-height: 1.8;
-    }
+  /* ── CONTACTO ── */
+  .contact-section {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+    text-align: center; padding: 80px 48px;
+  }
+  .contact-section .section-label { color: var(--cyan); }
+  .contact-section .section-title { color: white; margin-bottom: 16px; }
+  .contact-desc { font-size: 15px; color: rgba(255,255,255,0.6); margin-bottom: 40px; }
+  .contact-cards {
+    display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .contact-card {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px; padding: 20px 28px;
+    display: flex; align-items: center; gap: 14px;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .contact-card:hover { background: rgba(255,255,255,0.14); border-color: var(--cyan); }
+  .contact-card-icon { font-size: 22px; }
+  .contact-card-label { font-size: 11px; color: rgba(255,255,255,0.5); font-weight: 500; }
+  .contact-card-value { font-size: 14px; color: white; font-weight: 600; }
 
-    .hero-cta {
-      margin-top: 3rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
-      text-decoration: none;
-      color: var(--accent);
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--accent);
-      padding-bottom: 0.2rem;
-      width: fit-content;
-      transition: color 0.2s, border-color 0.2s;
-    }
+  /* ── FOOTER ── */
+  footer {
+    background: #060d1f; padding: 24px 48px;
+    text-align: center; font-size: 12px; color: rgba(255,255,255,0.3);
+  }
 
-    .hero-cta:hover { color: var(--accent2); border-color: var(--accent2); }
-
-    .hero-right {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-right-bg {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 60% 40%, #D6E8DA 0%, var(--bg) 70%);
-      z-index: 0;
-    }
-
-    .hero-right-content { position: relative; z-index: 1; }
-
-    .stat-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
-    }
-
-    .stat-item {
-      background: var(--bg);
-      padding: 1.8rem;
-    }
-
-    .stat-number {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2.5rem;
-      color: var(--accent);
-      display: block;
-    }
-
-    .stat-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 0.3rem;
-    }
-
-    /* SECTIONS */
-    section {
-      padding: 6rem 4rem;
-      border-top: 1px solid var(--line);
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 1.5rem;
-      margin-bottom: 4rem;
-    }
-
-    .section-num {
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      color: var(--accent2);
-      text-transform: uppercase;
-    }
-
-    .section-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2rem;
-      color: var(--ink);
-    }
-
-    /* PROJECT CARD */
-    .project-card {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      border: 1px solid var(--line);
-      background: var(--card);
-      overflow: hidden;
-      margin-bottom: 2rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(28,43,30,0.08);
-    }
-
-    .project-info {
-      padding: 3rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border-right: 1px solid var(--line);
-    }
-
-    .project-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent2);
-      margin-bottom: 1rem;
-    }
-
-    .project-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2.2rem;
-      line-height: 1.1;
-      margin-bottom: 1.2rem;
-      color: var(--ink);
-    }
-
-    .project-desc {
-      color: var(--muted);
-      font-size: 0.8rem;
-      line-height: 1.9;
-      flex: 1;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 2rem;
-    }
-
-    .tag {
-      font-size: 0.65rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.3rem 0.8rem;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      background: transparent;
-    }
-
-    .project-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      margin-top: 2.5rem;
-      text-decoration: none;
-      color: var(--accent);
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--accent);
-      padding-bottom: 0.2rem;
-      width: fit-content;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .project-link:hover { color: var(--accent2); border-color: var(--accent2); }
-
-    .project-visual {
-      background: var(--accent);
-      padding: 3rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 360px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .project-visual.uni {
-      background: #1C2B1E;
-    }
-
-    /* FEATURES */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
-      margin-top: 2rem;
-    }
-
-    .feature-item {
-      background: var(--bg);
-      padding: 2rem;
-    }
-
-    .feature-icon { font-size: 1.4rem; margin-bottom: 1rem; }
-
-    .feature-title {
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-      color: var(--ink);
-    }
-
-    .feature-desc {
-      font-size: 0.75rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    /* ABOUT */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .about-text {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 2;
-    }
-
-    .about-text p + p { margin-top: 1.2rem; }
-
-    .skills-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.8rem;
-      margin-top: 2rem;
-    }
-
-    .skill-item {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      font-size: 0.72rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .skill-dot {
-      width: 5px; height: 5px;
-      background: var(--accent);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    /* CONTACT */
-    .contact-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .contact-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      line-height: 1.1;
-      color: var(--ink);
-    }
-
-    .contact-title em { font-style: italic; color: var(--accent); }
-
-    .contact-links { display: flex; flex-direction: column; gap: 1.5rem; }
-
-    .contact-link {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      text-decoration: none;
-      color: var(--ink);
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding-bottom: 1.2rem;
-      border-bottom: 1px solid var(--line);
-      transition: color 0.2s;
-    }
-
-    .contact-link:hover { color: var(--accent); }
-    .contact-link span { color: var(--muted); font-size: 0.65rem; }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 2rem 4rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    footer p {
-      font-size: 0.68rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-left > * { animation: fadeUp 0.7s ease both; }
-    .hero-tag    { animation-delay: 0.1s; }
-    .hero-name   { animation-delay: 0.2s; }
-    .hero-bio    { animation-delay: 0.3s; }
-    .hero-cta    { animation-delay: 0.4s; }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      nav { padding: 1.2rem 1.5rem; }
-      .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; }
-      .hero-left { padding: 5rem 1.5rem 3rem; border-right: none; border-bottom: 1px solid var(--line); }
-      .hero-right { padding: 2rem 1.5rem; }
-      section { padding: 4rem 1.5rem; }
-      .project-card { grid-template-columns: 1fr; }
-      .project-visual { min-height: 220px; }
-      .features { grid-template-columns: 1fr; }
-      .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; }
-    }
-  </style>
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { gap: 20px; }
+    section { padding: 60px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-content { grid-template-columns: 1fr; gap: 48px; }
+    .hero-photo { order: -1; }
+    .photo-ring { width: 200px; height: 200px; }
+    .photo-initials { font-size: 48px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+    .timeline-item::before { display: none; }
+    .timeline-dot { display: none; }
+    .timeline-date { text-align: left; }
+    .timeline-body { padding-left: 0; }
+    .contact-section { padding: 60px 24px; }
+    footer { padding: 20px 24px; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero-btns { flex-direction: column; }
+    .btn-primary, .btn-outline { justify-content: center; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-logo">M. Henriquez</div>
-    <ul class="nav-links">
-      <li><a href="#projects">Proyectos</a></li>
-      <li><a href="#about">Sobre mí</a></li>
-      <li><a href="#contact">Contacto</a></li>
-    </ul>
-  </nav>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MH<span>.</span></div>
+  <div class="nav-links">
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#habilidades">Habilidades</a>
+    <a href="#experiencia">Experiencia</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#certificaciones">Certificaciones</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</nav>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-left">
-      <p class="hero-tag">Desarrolladora de Software</p>
-      <h1 class="hero-name">Marleni<br><em>Henriquez</em></h1>
-      <p class="hero-bio">
-        Construyo soluciones web funcionales y bien pensadas. Creo en el código limpio, en las interfaces que tienen sentido, y en aprender haciendo.
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-tag">Disponible para oportunidades</div>
+      <h1 class="hero-name">Marleni<br><span>Henriquez</span></h1>
+      <p class="hero-title">Estudiante de Informática Administrativa · Desarrolladora de Sistemas</p>
+      <p class="hero-desc">
+        Apasionada por el desarrollo de sistemas, bases de datos y seguridad informática.
+        Con experiencia en análisis, diseño y desarrollo de módulos para sistemas institucionales,
+        y habilidad para coordinar equipos y gestionar proyectos tecnológicos.
       </p>
-      <a href="#projects" class="hero-cta">Ver mi trabajo →</a>
+      <div class="hero-btns">
+        <a href="#proyectos" class="btn-primary">Ver proyectos →</a>
+        <a href="#contacto" class="btn-outline">📩 Contactar</a>
+      </div>
+      <div class="hero-contact">
+        <div class="contact-chip"><span>📍</span> Tegucigalpa, Honduras</div>
+        <div class="contact-chip"><span>📧</span> henriquez.cerrato2000@email.com</div>
+        <div class="contact-chip"><span>📞</span> +504 3391-1316</div>
+      </div>
     </div>
-    <div class="hero-right">
-      <div class="hero-right-bg"></div>
-      <div class="hero-right-content">
-        <div class="stat-grid">
-          <div class="stat-item">
-            <span class="stat-number">2</span>
-            <p class="stat-label">Proyectos realizados</p>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">∞</span>
-            <p class="stat-label">Ganas de aprender</p>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">☀️</span>
-            <p class="stat-label">Energía solar</p>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">100%</span>
-            <p class="stat-label">Hecho por mí</p>
-          </div>
+    <div class="hero-photo">
+      <div class="photo-ring">
+        <div class="photo-initials">M</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section class="about" id="sobre-mi">
+  <div class="section-inner">
+    <p class="section-label">Sobre mí</p>
+    <h2 class="section-title">Construyo sistemas que resuelven problemas reales</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Soy estudiante de Licenciatura en Informática Administrativa en la UNAH (100% de clases completadas), con enfoque en el desarrollo de sistemas, bases de datos y seguridad informática.</p>
+        <p>Cuento con experiencia práctica en proyectos institucionales de gran escala, donde he participado desde el levantamiento de requerimientos hasta la integración de módulos en sistemas en producción.</p>
+        <p>Me caracterizo por la organización, la capacidad de trabajo bajo presión y la coordinación efectiva de equipos. Busco aplicar mis habilidades en entornos donde la tecnología genere impacto real.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-number">3<span>+</span></div>
+          <div class="stat-label">Años de experiencia en proyectos</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">10<span>+</span></div>
+          <div class="stat-label">Certificaciones obtenidas</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">5<span>+</span></div>
+          <div class="stat-label">Proyectos desarrollados</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100<span>%</span></div>
+          <div class="stat-label">Clases universitarias completadas</div>
         </div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="section-header">
-      <span class="section-num">01 — Proyectos</span>
-      <h2 class="section-title">Lo que he construido</h2>
+<!-- HABILIDADES -->
+<section id="habilidades">
+  <div class="section-inner">
+    <p class="section-label">Habilidades</p>
+    <h2 class="section-title">Tecnologías y competencias</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title"><span>💻</span> Desarrollo</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">PHP / Laravel</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">APIs REST</span>
+          <span class="skill-tag">Next.js</span>
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">Angular</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title"><span>🗄️</span> Bases de datos</div>
+        <div class="skill-tags">
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">Oracle</span>
+          <span class="skill-tag">Supabase</span>
+          <span class="skill-tag">Power BI</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title"><span>🔒</span> Seguridad & Redes</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Seguridad informática</span>
+          <span class="skill-tag">Redes TCP/IP</span>
+          <span class="skill-tag">Ethical Hacking</span>
+          <span class="skill-tag">Ciberseguridad</span>
+          <span class="skill-tag">Cisco Networking</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title"><span>🛠️</span> Herramientas & Métodos</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Git / GitHub</span>
+          <span class="skill-tag">Jira</span>
+          <span class="skill-tag">Scrum</span>
+          <span class="skill-tag">Vercel</span>
+          <span class="skill-tag">UI/UX Design</span>
+          <span class="skill-tag">Documentación</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title"><span>🤝</span> Habilidades blandas</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Coordinación de equipos</span>
+          <span class="skill-tag">Organización y análisis</span>
+          <span class="skill-tag">Trabajo bajo presión</span>
+          <span class="skill-tag">Comunicación efectiva</span>
+          <span class="skill-tag">Resolución de problemas</span>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <!-- Solaris -->
-    <div class="project-card">
-      <div class="project-info">
-        <div>
-          <p class="project-label">Proyecto profesional · Desplegado</p>
-          <h3 class="project-title">Solaris</h3>
-          <p class="project-desc">
-            Sistema de gestión de órdenes de materiales para instalaciones de paneles solares. Permite a editores crear órdenes e ingresar materiales fuera del inventario; el administrador asigna códigos, precios y aprueba cada orden.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Gestión de órdenes</span>
-            <span class="tag">Roles de usuario</span>
-            <span class="tag">Inventario</span>
-            <span class="tag">Energía solar</span>
+<!-- EXPERIENCIA -->
+<section class="experience" id="experiencia">
+  <div class="section-inner">
+    <p class="section-label">Experiencia</p>
+    <h2 class="section-title">Trayectoria profesional</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-date">Marzo 2026<br>— actualidad</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-body">
+          <div class="timeline-role">Coordinadora de Equipo — Módulo Curricular</div>
+          <div class="timeline-company">DICIHT — UNAH | Práctica Profesional</div>
+          <ul class="timeline-bullets">
+            <li>Levantamiento de requerimientos funcionales y no funcionales del módulo.</li>
+            <li>Diseño lógico y funcional: prototipos, diagramas de flujo, casos de uso.</li>
+            <li>Desarrollo e integración del módulo al Sistema de Gestión de Información (SGI) de la UNAH.</li>
+            <li>Coordinación de equipo de 3 practicantes, asignación de tareas y seguimiento con Jira.</li>
+            <li>Definición de reglas de negocio, validaciones y diseño de base de datos.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">Enero 2025<br>— Enero 2026</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-body">
+          <div class="timeline-role">Gestora Documental — Proyecto IMJUPEMP</div>
+          <div class="timeline-company">PBS — Proyecto de Digitalización</div>
+          <ul class="timeline-bullets">
+            <li>Preparación, organización y digitalización de expedientes mediante escáner.</li>
+            <li>Edición y validación de documentos digitalizados verificando legibilidad.</li>
+            <li>Captura de datos en formatos QA y apoyo en revisión final en plataforma ICM.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">Junio 2024<br>— Dic. 2024</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-body">
+          <div class="timeline-role">Gestora Documental — Proyecto ARSA</div>
+          <div class="timeline-company">PBS — Proyecto de Digitalización</div>
+          <ul class="timeline-bullets">
+            <li>Preparación y digitalización de expedientes con metas diarias de calidad.</li>
+            <li>Validación y corrección de documentos digitalizados.</li>
+            <li>Apoyo en revisión final sobre plataforma documental ICM.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="proyectos">
+  <div class="section-inner">
+    <p class="section-label">Proyectos</p>
+    <h2 class="section-title">Lo que he construido</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon">☀️</div>
+          <div class="project-name">Solaris</div>
+          <div class="project-subtitle">Sistema de Gestión de Inventario</div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">Sistema web completo para gestión de materiales, órdenes de pedido y proveedores para una empresa de instalación solar. Incluye roles de administrador y editor, notificaciones en tiempo real, gestión de precios y vigencias.</p>
+          <div class="project-stack">
+            <span class="stack-tag">Next.js</span>
+            <span class="stack-tag">Supabase</span>
+            <span class="stack-tag">Tailwind</span>
+            <span class="stack-tag">Vercel</span>
+            <span class="stack-tag">PostgreSQL</span>
           </div>
+          <a href="https://solaris-dusky.vercel.app" target="_blank" class="project-link">
+            Ver proyecto en vivo →
+          </a>
         </div>
-        <a href="https://solaris-dusky.vercel.app" target="_blank" class="project-link">
-          Ver proyecto en vivo →
-        </a>
       </div>
-      <div class="project-visual">
-        <svg viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px">
-          <g stroke="#F5F2EA" stroke-width="1">
-            <rect x="30" y="30" width="80" height="50" rx="1" fill="#F5F2EA" fill-opacity="0.08"/>
-            <rect x="120" y="30" width="80" height="50" rx="1" fill="#F5F2EA" fill-opacity="0.08"/>
-            <rect x="210" y="30" width="80" height="50" rx="1" fill="#F5F2EA" fill-opacity="0.08"/>
-            <rect x="30" y="90" width="80" height="50" rx="1" fill="#F5F2EA" fill-opacity="0.15"/>
-            <rect x="120" y="90" width="80" height="50" rx="1" fill="#F5F2EA" fill-opacity="0.15"/>
-            <rect x="210" y="90" width="80" height="50" rx="1" fill="#F5F2EA" fill-opacity="0.15"/>
-            <rect x="30" y="150" width="80" height="50" rx="1" fill="#F5F2EA" fill-opacity="0.08"/>
-            <rect x="120" y="150" width="80" height="50" rx="1" fill="#F5F2EA" fill-opacity="0.08"/>
-            <rect x="210" y="150" width="80" height="50" rx="1" fill="#F5F2EA" fill-opacity="0.08"/>
-          </g>
-          <g stroke="#F5F2EA" stroke-width="0.5" opacity="0.3">
-            <line x1="70" y1="30" x2="70" y2="80"/><line x1="30" y1="55" x2="110" y2="55"/>
-            <line x1="160" y1="30" x2="160" y2="80"/><line x1="120" y1="55" x2="200" y2="55"/>
-            <line x1="250" y1="30" x2="250" y2="80"/><line x1="210" y1="55" x2="290" y2="55"/>
-            <line x1="70" y1="90" x2="70" y2="140"/><line x1="30" y1="115" x2="110" y2="115"/>
-            <line x1="160" y1="90" x2="160" y2="140"/><line x1="120" y1="115" x2="200" y2="115"/>
-            <line x1="250" y1="90" x2="250" y2="140"/><line x1="210" y1="115" x2="290" y2="115"/>
-          </g>
-          <circle cx="260" cy="210" r="30" fill="#F5F2EA" fill-opacity="0.1" stroke="#F5F2EA" stroke-width="1"/>
-          <circle cx="260" cy="210" r="18" fill="#F5F2EA" fill-opacity="0.2"/>
-          <g stroke="#F5F2EA" stroke-width="1" opacity="0.4">
-            <line x1="260" y1="172" x2="260" y2="180"/>
-            <line x1="260" y1="240" x2="260" y2="248"/>
-            <line x1="222" y1="210" x2="230" y2="210"/>
-            <line x1="290" y1="210" x2="298" y2="210"/>
-            <line x1="233" y1="183" x2="239" y2="189"/>
-            <line x1="281" y1="231" x2="287" y2="237"/>
-            <line x1="287" y1="183" x2="281" y2="189"/>
-            <line x1="239" y1="231" x2="233" y2="237"/>
-          </g>
-          <text x="30" y="222" fill="#F5F2EA" font-family="monospace" font-size="11" opacity="0.6">SOLARIS</text>
-          <text x="30" y="238" fill="#F5F2EA" font-family="monospace" font-size="8" opacity="0.4">Sistema de Gestión Solar</text>
-        </svg>
-      </div>
-    </div>
 
-    <div class="features">
-      <div class="feature-item">
-        <div class="feature-icon">📋</div>
-        <p class="feature-title">Gestión de Órdenes</p>
-        <p class="feature-desc">Los editores crean órdenes de materiales para cada instalación de paneles solares.</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">🗂️</div>
-        <p class="feature-title">Control de Inventario</p>
-        <p class="feature-desc">Solicitud de materiales nuevos con asignación de código y precio por el administrador.</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">✅</div>
-        <p class="feature-title">Aprobación de Órdenes</p>
-        <p class="feature-desc">El administrador revisa y aprueba cada orden garantizando el control del proceso.</p>
-      </div>
-    </div>
-
-    <!-- University project -->
-    <div class="project-card" style="margin-top:3rem;">
-      <div class="project-info">
-        <div>
-          <p class="project-label">Proyecto universitario</p>
-          <h3 class="project-title">Proyecto<br><em style="font-style:italic;color:var(--accent)">Universitario</em></h3>
-          <p class="project-desc">
-            Proyecto desarrollado durante mi formación universitaria. Aplicación de conocimientos de ingeniería de software, trabajo en equipo y resolución de problemas reales en un entorno académico.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Universidad</span>
-            <span class="tag">Trabajo en equipo</span>
-            <span class="tag">Desarrollo de software</span>
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon">🏛️</div>
+          <div class="project-name">Módulo SGI — UNAH</div>
+          <div class="project-subtitle">Sistema de Gestión Institucional</div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">Módulo curricular desarrollado para la DICIHT-UNAH como parte del Sistema de Gestión de Información institucional. Diseño completo desde requerimientos hasta integración, coordinando un equipo de 3 personas.</p>
+          <div class="project-stack">
+            <span class="stack-tag">Análisis</span>
+            <span class="stack-tag">Diseño de BD</span>
+            <span class="stack-tag">Frontend</span>
+            <span class="stack-tag">Backend</span>
+            <span class="stack-tag">Jira / Scrum</span>
           </div>
-        </div>
-        <span style="display:inline-block;margin-top:2.5rem;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:0.2rem;">Sin demo disponible</span>
-      </div>
-      <div class="project-visual uni">
-        <svg viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px">
-          <!-- Graduation cap -->
-          <polygon points="160,60 240,100 160,140 80,100" fill="#4A8C5C" fill-opacity="0.3" stroke="#4A8C5C" stroke-width="1.5"/>
-          <rect x="140" y="100" width="40" height="60" rx="2" fill="#4A8C5C" fill-opacity="0.2" stroke="#4A8C5C" stroke-width="1"/>
-          <line x1="240" y1="100" x2="240" y2="130" stroke="#4A8C5C" stroke-width="1.5"/>
-          <circle cx="240" cy="135" r="6" fill="#4A8C5C" fill-opacity="0.5" stroke="#4A8C5C" stroke-width="1"/>
-          <!-- Code lines -->
-          <g stroke="#F5F2EA" stroke-width="1" opacity="0.2">
-            <line x1="80" y1="180" x2="180" y2="180"/>
-            <line x1="80" y1="192" x2="150" y2="192"/>
-            <line x1="80" y1="204" x2="200" y2="204"/>
-            <line x1="80" y1="216" x2="130" y2="216"/>
-          </g>
-          <text x="80" y="245" fill="#4A8C5C" font-family="monospace" font-size="9" opacity="0.6">FORMACIÓN ACADÉMICA</text>
-        </svg>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="section-header">
-      <span class="section-num">02 — Sobre mí</span>
-      <h2 class="section-title">Quién soy</h2>
-    </div>
-    <div class="about-grid">
-      <div>
-        <div class="about-text">
-          <p>Soy Marleni Liliana Henriquez Cerrato, desarrolladora de software con enfoque en construir aplicaciones web funcionales que resuelven problemas reales.</p>
-          <p>Solaris es mi primer proyecto desplegado — un sistema completo con múltiples roles de usuario, gestión de inventario y flujos de aprobación. Lo construí sola, de principio a fin.</p>
-          <p>Cuento también con experiencia en desarrollo de proyectos académicos y estoy en constante aprendizaje, con muchos proyectos por construir.</p>
+          <span class="project-link" style="color:#94a3b8; cursor:default">Sistema institucional privado</span>
         </div>
       </div>
-      <div>
-        <p style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent2);margin-bottom:1.5rem;">Lo que manejo</p>
-        <div class="skills-list">
-          <div class="skill-item"><span class="skill-dot"></span>Desarrollo Web</div>
-          <div class="skill-item"><span class="skill-dot"></span>Gestión de Roles</div>
-          <div class="skill-item"><span class="skill-dot"></span>Bases de Datos</div>
-          <div class="skill-item"><span class="skill-dot"></span>Deploy en Vercel</div>
-          <div class="skill-item"><span class="skill-dot"></span>UI/UX Funcional</div>
-          <div class="skill-item"><span class="skill-dot"></span>Resolución de Bugs</div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon">📁</div>
+          <div class="project-name">Digitalización Documental</div>
+          <div class="project-subtitle">IMJUPEMP & ARSA — PBS</div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">Participación en proyectos de digitalización masiva de expedientes para entidades gubernamentales, con control de calidad (QA) e integración en la plataforma documental ICM.</p>
+          <div class="project-stack">
+            <span class="stack-tag">ICM Platform</span>
+            <span class="stack-tag">Control de calidad</span>
+            <span class="stack-tag">Gestión documental</span>
+          </div>
+          <span class="project-link" style="color:#94a3b8; cursor:default">Proyecto institucional</span>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="contact-inner">
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICACIONES -->
+<section class="certs" id="certificaciones">
+  <div class="section-inner">
+    <p class="section-label">Formación complementaria</p>
+    <h2 class="section-title">Certificaciones obtenidas</h2>
+    <div class="certs-grid">
+      <div class="cert-card"><div class="cert-icon">🔐</div><div><div class="cert-name">Ethical Hacker</div><div class="cert-year">2025</div></div></div>
+      <div class="cert-card"><div class="cert-icon">🛡️</div><div><div class="cert-name">Introducción a la Ciberseguridad</div><div class="cert-year">2025</div></div></div>
+      <div class="cert-card"><div class="cert-icon">🔑</div><div><div class="cert-name">Identidad Digital y Firma Electrónica</div><div class="cert-year">2025</div></div></div>
+      <div class="cert-card"><div class="cert-icon">⚙️</div><div><div class="cert-name">Gobernanza de TI</div><div class="cert-year">2025</div></div></div>
+      <div class="cert-card"><div class="cert-icon">🌐</div><div><div class="cert-name">Cisco Networking Academy</div><div class="cert-year">2025</div></div></div>
+      <div class="cert-card"><div class="cert-icon">🔒</div><div><div class="cert-name">Técnico en Seguridad — Control de Accesos</div><div class="cert-year">Nov. 2025</div></div></div>
+      <div class="cert-card"><div class="cert-icon">🐍</div><div><div class="cert-name">Python</div><div class="cert-year">Feb. 2026</div></div></div>
+      <div class="cert-card"><div class="cert-icon">📊</div><div><div class="cert-name">Power BI</div><div class="cert-year">Ene. 2026</div></div></div>
+      <div class="cert-card"><div class="cert-icon">📈</div><div><div class="cert-name">Tablas Dinámicas en Excel (CAMCOP)</div><div class="cert-year">2023</div></div></div>
+      <div class="cert-card"><div class="cert-icon">📣</div><div><div class="cert-name">Marketing Digital — Google</div><div class="cert-year">2023</div></div></div>
+      <div class="cert-card"><div class="cert-icon">💰</div><div><div class="cert-name">Taller de Presupuesto Logístico (ESCADE)</div><div class="cert-year">2022</div></div></div>
+      <div class="cert-card"><div class="cert-icon">🚀</div><div><div class="cert-name">Proyecto "Creando mi Futuro" — USAID</div><div class="cert-year">2022</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCACIÓN -->
+<section id="educacion">
+  <div class="section-inner">
+    <p class="section-label">Educación</p>
+    <h2 class="section-title">Formación académica</h2>
+    <div style="background:white; border-radius:20px; border:1px solid #e2e8f0; padding:36px; box-shadow:0 4px 20px rgba(0,0,0,0.06); max-width:600px; display:flex; gap:24px; align-items:flex-start;">
+      <div style="width:56px; height:56px; border-radius:14px; background:linear-gradient(135deg,var(--navy),var(--accent)); display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0;">🎓</div>
       <div>
-        <p class="section-num" style="margin-bottom:1.5rem;">03 — Contacto</p>
-        <h2 class="contact-title">Hablemos de<br><em>tu próximo<br>proyecto</em></h2>
-      </div>
-      <div class="contact-links">
-        <a href="https://solaris-dusky.vercel.app" target="_blank" class="contact-link">
-          Ver Solaris en vivo
-          <span>solaris-dusky.vercel.app →</span>
-        </a>
-        <a href="https://github.com/alexamarly25" target="_blank" class="contact-link">
-          GitHub
-          <span>github.com/alexamarly25 →</span>
-        </a>
-        <a href="https://www.linkedin.com/in/marleni-cerrato-6294472b9" target="_blank" class="contact-link">
-          LinkedIn
-          <span>Ver perfil →</span>
-        </a>
-        <a href="mailto:henriquez.cerrato2000@gmail.com" class="contact-link">
-          Email
-          <span>henriquez.cerrato2000@gmail.com →</span>
-        </a>
+        <div style="font-family:'Syne',sans-serif; font-size:18px; font-weight:700; color:var(--navy); margin-bottom:6px;">Licenciatura en Informática Administrativa</div>
+        <div style="font-size:14px; font-weight:600; color:var(--accent); margin-bottom:10px;">Universidad Nacional Autónoma de Honduras — UNAH</div>
+        <div style="display:inline-flex; align-items:center; gap:6px; background:#f0fdf4; border:1px solid #bbf7d0; color:#065f46; font-size:12px; font-weight:700; padding:4px 12px; border-radius:20px;">✓ 100% de clases completadas</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 Marleni Henriquez</p>
-    <p>Diseñado & construido con intención</p>
-  </footer>
+<!-- CONTACTO -->
+<section class="contact-section" id="contacto">
+  <div class="section-inner">
+    <p class="section-label">Contacto</p>
+    <h2 class="section-title">¿Hablamos?</h2>
+    <p class="contact-desc">Estoy abierta a oportunidades laborales, prácticas profesionales y proyectos colaborativos.</p>
+    <div class="contact-cards">
+      <a href="mailto:henriquez.cerrato2000@email.com" class="contact-card">
+        <div class="contact-card-icon">📧</div>
+        <div>
+          <div class="contact-card-label">Correo</div>
+          <div class="contact-card-value">henriquez.cerrato2000@email.com</div>
+        </div>
+      </a>
+      <a href="tel:+50433911316" class="contact-card">
+        <div class="contact-card-icon">📞</div>
+        <div>
+          <div class="contact-card-label">Teléfono</div>
+          <div class="contact-card-value">+504 3391-1316</div>
+        </div>
+      </a>
+      <a href="https://github.com/alexamarly25" target="_blank" class="contact-card">
+        <div class="contact-card-icon">💻</div>
+        <div>
+          <div class="contact-card-label">GitHub</div>
+          <div class="contact-card-value">github.com/alexamarly25</div>
+        </div>
+      </a>
+    </div>
+    <a href="mailto:henriquez.cerrato2000@email.com" class="btn-primary" style="font-size:15px; padding:15px 36px;">
+      Enviar mensaje →
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Marleni Liliana Henriquez Cerrato · Tegucigalpa, Honduras</p>
+</footer>
 
 </body>
 </html>
