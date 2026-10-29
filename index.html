@@ -137,10 +137,6 @@
     animation: spin 20s linear infinite;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
-  .photo-ring img {
-    width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
-    background: linear-gradient(135deg, #1A3A6B, #2D7DD2);
-  }
   .photo-initials {
     width: 100%; height: 100%; border-radius: 50%;
     background: linear-gradient(135deg, #1A3A6B, #2D7DD2);
@@ -361,7 +357,6 @@
     .hero-content { grid-template-columns: 1fr; gap: 48px; }
     .hero-photo { order: -1; }
     .photo-ring { width: 200px; height: 200px; }
-    .photo-initials { font-size: 48px; }
     .about-grid { grid-template-columns: 1fr; gap: 40px; }
     .timeline-item { grid-template-columns: 1fr; gap: 8px; }
     .timeline-item::before { display: none; }
@@ -582,6 +577,7 @@
     <h2 class="section-title">Lo que he construido</h2>
     <div class="projects-grid">
 
+      <!-- Solaris -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-icon">☀️</div>
@@ -603,6 +599,26 @@
         </div>
       </div>
 
+      <!-- Amueblarq -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon">🪑</div>
+          <div class="project-name">Amueblarq</div>
+          <div class="project-subtitle">Sistema de Inventario (Proyecto Universitario)</div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">Sistema de control de inventario desarrollado como proyecto académico en colaboración directa con la empresa Amueblarq, enfocado en optimizar el control de stock, almacenamiento y flujo de mercancía.</p>
+          <div class="project-stack">
+            <span class="stack-tag">Angular</span>
+            <span class="stack-tag">Node.js</span>
+            <span class="stack-tag">PostgreSQL</span>
+            <span class="stack-tag">Gestión de Stock</span>
+          </div>
+          <span class="project-link" style="color:#94a3b8; cursor:default">Proyecto académico / empresarial</span>
+        </div>
+      </div>
+
+      <!-- Módulo SGI -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-icon">🏛️</div>
@@ -622,6 +638,25 @@
         </div>
       </div>
 
+      <!-- Tiendita Mexicana -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon">🛒</div>
+          <div class="project-name">Tiendita Mexicana</div>
+          <div class="project-subtitle">Sistema de Inventario y Ventas</div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">Solución ligera y práctica de control de inventario y registro de ventas adaptada específicamente a las necesidades operativas y comerciales de un negocio minorista (retail).</p>
+          <div class="project-stack">
+            <span class="stack-tag">Frontend</span>
+            <span class="stack-tag">Backend</span>
+            <span class="stack-tag">Control de Ventas</span>
+          </div>
+          <span class="project-link" style="color:#94a3b8; cursor:default">Solución comercial</span>
+        </div>
+      </div>
+
+      <!-- Digitalización Documental -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-icon">📁</div>
